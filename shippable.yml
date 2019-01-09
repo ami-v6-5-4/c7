@@ -18,7 +18,7 @@ build:
     - kubectl version --client #1.10.0
     - packer.io version #1.2.3
     - terraform --version #0.11.7
-    - apt search azure-cli
+   # - apt search azure-cli
     - az --version #2.0.32
     - ansible --version #2.5.2
     - doctl version #1.8.0
