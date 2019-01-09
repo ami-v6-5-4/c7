@@ -1,4 +1,4 @@
-language: python
+language: none
 
 runtime:
   nodePool: dynamic__x86_64__CentOS_7__c4_large
@@ -10,7 +10,29 @@ build:
     pull: true
     
   ci:
-    - python --version 
+    - python -V
+    - pip --version
+    - aws --version #1.15.14
+    - gcloud version #200.0.0
+    - jfrog --version #1.15.1
+    - kubectl version --client #1.10.0
+    - packer.io version #1.2.3
+    - terraform --version #0.11.7
+    #- apt search azure-cli
+    - az --version #2.0.32
+    - ansible --version #2.5.2
+    - doctl version #1.8.0
+   # - pip show boto #2.48.0
+   # - pip show boto3
+   # - pip show apache-libcloud #2.3.0
     - EXPECTED_DOCKER_VERSION="17.06.0-ce"
     - |
       [ $(docker version --format {{.Server.Version}}) == "$EXPECTED_DOCKER_VERSION" ]
+    - docker pull shippabledocker/sample_node_pvt:ecr
+
+integrations:
+  hub:
+
+ #Docker integration
+    - integrationName: ship-docker
+      type: dockerRegistryLogin
